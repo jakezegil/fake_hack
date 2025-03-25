@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Security Alert</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        #hacked-message {
+            font-size: 8vw;
+            font-weight: bold;
+            animation: blink 0.5s infinite;
+            text-align: center;
+        }
+        
+        #instructions {
+            position: fixed;
+            bottom: 20px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="hacked-message">⚠️ SYSTEM HACKED ⚠️</div>
+
+    <script>
+        // Set to fullscreen when opened
+        document.addEventListener('click', function() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            }
+        });
+        
+        // Listen for the escape key to exit
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                
+                // Redirect to a safe page or close
+                document.body.innerHTML = '<div style="color: green; font-size: 4vw; text-align: center;">System Restored</div>';
+                
+                // Optional: close after 2 seconds
+                setTimeout(function() {
+                    window.close();
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
